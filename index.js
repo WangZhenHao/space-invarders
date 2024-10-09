@@ -40,12 +40,13 @@ window.addEventListener('keydown', (event) => {
     }
 })
 
-const invader = new Invader({
-    position: {
-        x: innerWidth / 2,
-        y: innerWidth / 2
-    }
-})
+// const invader = new Invader({
+//     position: {
+//         x: innerWidth / 2,
+//         y: innerWidth / 2
+//     }
+// })
+
 window.addEventListener('keyup', (event) => {
     const key = event.key
     switch(key) {
@@ -61,11 +62,15 @@ window.addEventListener('keyup', (event) => {
         break
     }
 })
+const grids = [new Grid()]
 
 function animate() {
     ctx.clearRect(0, 0, innerWidth, innerHeight)
     player.update()
-    invader.update()
+    
+    grids.forEach(grid => {
+        grid.update()
+    })
     projectiles.forEach((projectile, index) => {
         if(projectile.isOnSreen()) {
             projectile.update()

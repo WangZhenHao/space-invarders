@@ -21,8 +21,11 @@ class Invader {
         );
     }
 
-    update() {
+    update({ velocity }) {
         if (this.image) {
+            this.position.x += velocity.x;
+            this.position.y += velocity.y;
+            
             this.draw();
         }
     }
