@@ -26,7 +26,6 @@ window.addEventListener('keydown', (event) => {
             KeyMinitor.d.pressed = true
         break;
         case ' ':
-            console.log(projectiles)
             projectiles.push(new Projectile({
                 position: {
                     x: player.position.x + player.width / 2,
@@ -41,6 +40,12 @@ window.addEventListener('keydown', (event) => {
     }
 })
 
+const invader = new Invader({
+    position: {
+        x: innerWidth / 2,
+        y: innerWidth / 2
+    }
+})
 window.addEventListener('keyup', (event) => {
     const key = event.key
     switch(key) {
@@ -60,7 +65,7 @@ window.addEventListener('keyup', (event) => {
 function animate() {
     ctx.clearRect(0, 0, innerWidth, innerHeight)
     player.update()
-
+    invader.update()
     projectiles.forEach((projectile, index) => {
         if(projectile.isOnSreen()) {
             projectile.update()
