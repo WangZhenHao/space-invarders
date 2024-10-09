@@ -63,11 +63,18 @@ window.addEventListener('keyup', (event) => {
     }
 })
 const grids = [new Grid()]
-
+let frame = 0
+let randomInterval = Math.floor(Math.random() * 500 + 500)
 function animate() {
     ctx.clearRect(0, 0, innerWidth, innerHeight)
+    frame++
     player.update()
     
+    if(frame % randomInterval === 0) {
+        grids.push(new Grid())
+        randomInterval = Math.floor(Math.random() * 500 + 500)
+    }
+
     grids.forEach(grid => {
         grid.update()
     })
