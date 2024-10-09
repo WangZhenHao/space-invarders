@@ -12,9 +12,10 @@ const KeyMinitor = {
         pressed: false
     }
 }
+const projectiles = []
 
 window.addEventListener('keydown', (event) => {
-    console.log(event.key)
+    
     const key = event.key
     switch(key) {
         case 'a':
@@ -25,7 +26,17 @@ window.addEventListener('keydown', (event) => {
             KeyMinitor.d.pressed = true
         break;
         case ' ':
-
+            console.log(projectiles)
+            projectiles.push(new Projectile({
+                position: {
+                    x: player.position.x + player.width / 2,
+                    y: player.position.y
+                },
+                velocity: {
+                    x: 0,
+                    y: -7
+                }
+            }))
         break
     }
 })
@@ -49,6 +60,18 @@ window.addEventListener('keyup', (event) => {
 function animate() {
     ctx.clearRect(0, 0, innerWidth, innerHeight)
     player.update()
+
+    projectiles.forEach((projectile, index) => {
+        if(projectile.isOnSreen()) {
+            projectile.update()
+        } else {
+            setTimeout(() => {
+                projectiles.splice(index, 1)
+            })
+        }
+        
+    })
+
     requestAnimationFrame(animate)
 }
 
