@@ -71,7 +71,7 @@ function animate() {
     player.update()
     
     if(frame % randomInterval === 0) {
-        grids.push(new Grid())
+        // grids.push(new Grid())
         randomInterval = Math.floor(Math.random() * 500 + 500)
     }
 
