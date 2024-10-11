@@ -55,6 +55,15 @@ class Grid {
                             this.invaders.splice(i, 1)
                             projectiles.splice(j, 1)
                         }
+
+                        if(this.invaders.length > 0) {
+                            const firstInvader = this.invaders[0]
+                            const lastInvader = this.invaders[this.invaders.length - 1]
+
+                            this.width = lastInvader.position.x - firstInvader.position.x + firstInvader.width
+                            this.position.x = firstInvader.position.x
+                            
+                        }
                        
                     })
                 }

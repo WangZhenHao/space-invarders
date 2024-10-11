@@ -65,6 +65,8 @@ window.addEventListener('keyup', (event) => {
 const grids = [new Grid()]
 let frame = 0
 let randomInterval = Math.floor(Math.random() * 500 + 500)
+const invaderProjectiles = []
+
 function animate() {
     ctx.clearRect(0, 0, innerWidth, innerHeight)
     frame++
@@ -77,6 +79,11 @@ function animate() {
 
     grids.forEach(grid => {
         grid.update()
+        
+        if(frame % 100 === 0 && grid.invaders.length > 0) {
+            grid.invaders[Math.floor(Math.random() * grid.invaders.length)].shot()
+        }
+        // 
     })
     projectiles.forEach((projectile, index) => {
         if(projectile.isOnSreen()) {
@@ -87,6 +94,9 @@ function animate() {
             })
         }
         
+    })
+    invaderProjectiles.forEach((invaderProjectile, index) => {
+        invaderProjectile.update()
     })
 
     requestAnimationFrame(animate)
