@@ -68,10 +68,14 @@ let randomInterval = Math.floor(Math.random() * 500 + 500);
 const invaderProjectiles = [];
 const particles = [];
 const starts = createStart()
-
+const game  = {
+    active: true
+}
 
 
 function animate() {
+    if(!game.active) return
+
     ctx.clearRect(0, 0, innerWidth, innerHeight);
     frame++;
     player.update();
@@ -101,7 +105,27 @@ function animate() {
         }
     });
     invaderProjectiles.forEach((invaderProjectile, index) => {
-        invaderProjectile.update();
+        if(invaderProjectile.isOnSreen()) {
+            invaderProjectile.update();
+        } else {
+            setTimeout(() => {
+                invaderProjectiles.splice(index, 1)
+            })
+        }
+
+        if(invaderProjectile.position.y + invaderProjectile.height >= player.position.y &&
+           invaderProjectile.position.x + invaderProjectile.width >= player.position.x &&
+           invaderProjectile.position.x <= player.position.x + player.width
+        ) {
+            invaderProjectiles.splice(index, 1)
+            player.apacity = 0
+            createParticle(player)
+
+            setTimeout(() => {
+                game.active = false
+                alert('游戏结束')
+            }, 2000)
+        }   
     });
 
     particles.forEach((item, index) => {

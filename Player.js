@@ -20,10 +20,13 @@ class Player {
                 y: innerHeight - this.height - 20
             }
         }
+
+        this.apacity = 1
     }
 
     draw() {
         ctx.save()
+        ctx.globalAlpha = this.apacity
         ctx.translate(
             this.position.x + this.width / 2,
             this.position.y + this.height / 2,

@@ -20,6 +20,6 @@ class InvaderProjectile {
     }
 
     isOnSreen() {
-        
+        return this.position.y + this.height <= innerHeight
     }
 }
