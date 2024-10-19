@@ -20,12 +20,14 @@ x 9. 入侵者回击
 
 x 10. 入侵者爆炸
 
-11. 创建背景星星
+x 11. 创建背景星星
 
 12. 输掉游戏的条件
 
 13. 分数
 
 
+
+# 键盘A，D移动位置，空格键发射炮弹
 
 [在线预览地址：https://wangzhenhao.github.io/space-invarders/](https://wangzhenhao.github.io/space-invarders/)

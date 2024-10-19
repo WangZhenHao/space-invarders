@@ -67,7 +67,7 @@ let frame = 0;
 let randomInterval = Math.floor(Math.random() * 500 + 500);
 const invaderProjectiles = [];
 const particles = [];
-
+const starts = createStart()
 
 
 
@@ -113,6 +113,9 @@ function animate() {
             item.update();
         }
     });
+    starts.forEach(item => {
+        item.update()
+    })
     requestAnimationFrame(animate);
 }
 
