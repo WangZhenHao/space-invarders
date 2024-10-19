@@ -1,3 +1,17 @@
+function createParticle(invader) {
+    for (let i = 0; i < 15; i++) {
+        particles.push(new Particle(
+            { x: invader.position.x + invader.width / 2, y: invader.position.y + invader.height / 2 },
+            {
+                x: (Math.random() - 0.5) * 2,
+                y: (Math.random() - 0.5) * 2
+            },
+            Math.random() * 3,
+            'white'
+        ));
+    }
+}
+
 class Grid {
     constructor() {
         this.position = {
@@ -54,6 +68,7 @@ class Grid {
                         if(invaderFound && projectileFound) {
                             this.invaders.splice(i, 1)
                             projectiles.splice(j, 1)
+                            createParticle(invaderFound)
                         }
 
                         if(this.invaders.length > 0) {
