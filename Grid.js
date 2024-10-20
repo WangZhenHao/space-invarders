@@ -69,6 +69,9 @@ class Grid {
                             this.invaders.splice(i, 1)
                             projectiles.splice(j, 1)
                             createParticle(invaderFound)
+
+                            score += 100
+                            scoreNum.innerHTML = score
                         }
 
                         if(this.invaders.length > 0) {

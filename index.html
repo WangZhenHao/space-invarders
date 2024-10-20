@@ -14,9 +14,17 @@
             background-color: #000;
             display: block;
         }
+        .score-wrap {
+            position: absolute;
+            font-size: 14px;
+            color: #fff;
+            left: 10px;
+            top: 10px;
+        }
     </style>
 </head>
 <body>
+    <div class="score-wrap">分数：<span  id="scoreNum">0</span></div>
     <canvas></canvas>
     <script src="./Player.js"></script>
     <script src="./Projectile.js"></script>
